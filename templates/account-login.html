@@ -1,0 +1,137 @@
+{% extends "base_template.html" %}
+{% load static%}
+
+{% block content %} 
+<body>
+
+    <!--== Wrapper Start ==-->
+    <div class="wrapper">
+      
+        <main class="main-content">
+            
+            <!--== Start Account Area Wrapper ==-->
+            <section class="section-space">
+                <div class="container">
+                    <div class="row mb-n8">
+                        <div class="my-account-form-container">
+                            <div class="my-account-form login-form">
+                               <!--== Start Login Area Wrapper ==-->
+                               <div class="my-account-item-wrap">
+                                <h3 class="title">Register</h3>
+                                <div class="my-account-form">
+                                    <form action="#" method="post">
+                                        <div class="form-group mb-6">
+                                            <label for="register_username">Username or Email Address <sup>*</sup></label>
+                                            <input type="email" id="register_username">
+                                        </div>
+            
+                                        <div class="form-group mb-6">
+                                            <label for="register_pwsd">Password <sup>*</sup></label>
+                                            <div class="password-input-container">
+                                                <input type="password" id="register_pwsd" class="password-input">
+                                                <span class="toggle-password" onclick="togglePasswordVisibility('register_pwsd')">
+                                                    <i class="fa fa-eye" id="eye-icon"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+            
+                                        <div class="form-group">
+                                            <a class="btn btn-register-custom" href="my-account.html">Register</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--== End Login Area Wrapper ==-->
+                            </div>
+                            <div class="my-account-form register-form-custom">
+                              <!--== Start Register Area Wrapper ==-->
+                              <div class="my-account-item-wrap">
+                                <h3 class="title">Login</h3>
+                                <div class="my-account-form">
+                                    <form action="#" method="post">
+                                        <div class="form-group mb-6">
+                                            <label for="login_username">Username or Email Address <sup>*</sup></label>
+                                            <input type="email" id="login_username">
+                                        </div>
+                                        
+                                        <div class="form-group mb-6">
+                                            <label for="register_pwsd">Password <sup>*</sup></label>
+                                            <div class="password-input-container">
+                                                <input type="password" id="register_pwsd" class="password-input">
+                                                <span class="toggle-password" onclick="togglePasswordVisibility('register_pwsd')">
+                                                    <i class="fa fa-eye" id="eye-icon"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-align-center">
+                                            <a class="lost-password" href="my-account.html">Lost your Password?</a>
+                                        </div>
+                                        
+                                        <br>
+                                        <div class="form-group d-flex align-items-center mb-14 login-custom btn-register-custom">
+                                            <a class="btn" href="my-account.html">Login</a> 
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--== End Register Area Wrapper ==-->
+                            </div>
+                        </div>
+                        <div class="my-account-toggle">
+                            <a class="bt" id="toggle-form" type="button" style="color:#ff6565;">Already have an account <span style="color: blue;">''Login''</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--== End Account Area Wrapper ==-->
+            
+        </main>
+
+        <!--== Scroll Top Button ==-->
+        <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
+
+        <!-- Other modals and scripts go here -->
+
+        <script>
+            document.getElementById('toggle-form').addEventListener('click', function() {
+                var loginForm = document.querySelector('.my-account-form.login-form');
+                var registerForm = document.querySelector('.my-account-form.register-form-custom');
+        
+                // Check if loginForm is currently visible
+                var loginFormVisible = window.getComputedStyle(loginForm).getPropertyValue('display') !== 'none';
+        
+                if (loginFormVisible) {
+                    loginForm.style.display = 'none';
+                    registerForm.style.display = 'block';
+                    document.getElementById('toggle-form').innerHTML = "Don't have an account <span style='color: blue;'>''Sign Up''</span>";
+                } else {
+                    loginForm.style.display = 'block';
+                    registerForm.style.display = 'none';
+                    document.getElementById('toggle-form').innerHTML = "Don't have an account <span style='color: blue;'>''Sign Up''</span>";
+                }
+            });
+                function togglePasswordVisibility(passwordFieldId) {
+                var passwordField = document.getElementById(passwordFieldId);
+                var eyeIcon = document.getElementById('eye-icon');
+
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    eyeIcon.classList.remove('fa-eye');
+                    eyeIcon.classList.add('fa-eye-slash');
+                } else {
+                    passwordField.type = 'password';
+                    eyeIcon.classList.remove('fa-eye-slash');
+                    eyeIcon.classList.add('fa-eye');
+                }
+            }
+
+        </script>
+        
+
+    </div>
+    <!--== Wrapper End ==-->
+<br><br>
+    {% endblock %}
+</body>
+</html>
